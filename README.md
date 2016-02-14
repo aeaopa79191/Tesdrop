@@ -29,7 +29,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [2016] [Zhipeng Mei]
+    Copyright [2016] [Zhipeng (Adrian) Mei, Carlos Osco, Ka Kin Chiu (Ken)]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
