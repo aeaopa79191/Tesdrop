@@ -14,7 +14,7 @@ The following **required** functionality is completed:
 - [ ] Details for each cell in the table view
 - [ ] My contribution page fo each user
 
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
+The following **optional** features are implemented:
 
 1. [ ] Convert images to pdf files. 
 2. [ ] Feadbacks from users
