@@ -28,7 +28,8 @@ The following **optional** features are implemented:
 
 Here we have our App's sketches with regards of each screen with key elements.
 
- http://tinyurl.com/h9ylo76
+ http://tinyurl.com/h9ylo76 
+ 
  http://tinyurl.com/hcs7y4g
 
 ## Video Walkthrough 
