@@ -24,6 +24,11 @@ The following **optional** features are implemented:
 6. [ ] Geo-Location
 7. [ ] Files rating by users
 
+## Wireframes Sketches 
+
+Here we have our App's sketches with regards of each screen with key elements.
+
+[embed]https://www.dropbox.com/home/tesDrop_Project?preview=justin_s_layout_1.pdf[/embed] 
 
 ## Video Walkthrough 
 
