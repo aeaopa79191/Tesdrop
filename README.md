@@ -29,6 +29,7 @@ The following **optional** features are implemented:
 Here we have our App's sketches with regards of each screen with key elements.
 
  https://www.dropbox.com/home/tesDrop_Project?preview=justin_s_layout_1.pdf 
+ https://www.dropbox.com/home/tesDrop_Project?preview=tesdrop_meeting_feb_20.pdf
 
 ## Video Walkthrough 
 
