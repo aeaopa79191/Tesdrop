@@ -28,9 +28,8 @@ The following **optional** features are implemented:
 
 Here we have our App's sketches with regards of each screen with key elements.
 
- http://tinyurl.com/h9ylo76 
- 
- http://tinyurl.com/hcs7y4g
+https://www.dropbox.com/s/rjrerfzg9e7ktgu/justin_s_layout_1.pdf?dl=0 
+https://www.dropbox.com/s/i4nwt30i5a2v1pk/tesdrop_meeting_feb_20.pdf?dl=0
 
 ## Video Walkthrough 
 
