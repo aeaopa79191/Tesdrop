@@ -1,7 +1,7 @@
 # Project - *Tesdrop*
 
 **Tesdrop** 
-A free educational mobile app which provides a plataform for students to exchange files(approved past tests/ exams paper).
+A free educational mobile app which provides a platform for students to exchange files (approved past tests/ exams paper).
 
 Time spent: ***** hours spent in total
 
