@@ -44,6 +44,50 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
+## Considerations
+
+1. What is your product pitch?
+Problem: Students need resources to prepare for their upcoming test.
+Solution: Tesdrop provides an interface where users can share their files.
+
+2. Focus on engaging your audience with a relatable need.
+Story: Preparing for an exam is a taugh task, so Tesdrop would provide students a couple of extra resources, so they can prepare for their upcoming test.
+
+3. Who are the key stakeholders for this app?
+- Who will be using this?
+    Students and professors.
+- What will they be using this for?
+    Students: They will have more things to study from.
+    Professors: They will use the model/structure to brainstorm ideas for their upcoming tests.
+
+4. What are the core flows?
+- What are the key functions?
+    Login/Sign up, home, upload, and search.
+- What screens will each user see?
+    Login/Sign up: User will be able to login/signup.
+    Home: User will see posts near their location.
+    Upload: User will be able to successfully upload their file.
+    Search: User will be able to filter out the database to get their desire file.
+
+5. What will your final demo look like?
+Describe the flow of your final demo
+I. Login/ Sign up
+II. Home (Look at posts near your geo-location).
+III. A. User will capture their file and add filters to it.
+IV. User can see their contribution.
+V. User can search other files based on the filters.
+VI.User can select the file, and can download/email.
+
+6. What mobile features do you leverage?
+- Leverage at least two mobile-oriented features (i.e. maps and camera)
+    [ ]Users will be required to use their camera to capture the file
+    [ ]Users will need to use their geo-location to filter the file.
+
+7. What are your technical concerns?
+- What technical features do you need help or resources for?
+    We need resources about filtering out the date base.
+
+
 ## License
 
     Copyright [2016] [Zhipeng (Adrian) Mei, Carlos Osco, Ka Kin Chiu (Ken)]
