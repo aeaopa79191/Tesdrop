@@ -21,6 +21,7 @@
 		3A3EDFB51C71305F0028F6F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3EDFB31C71305F0028F6F5 /* Main.storyboard */; };
 		3A3EDFB71C71305F0028F6F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A3EDFB61C71305F0028F6F5 /* Assets.xcassets */; };
 		3A3EDFBA1C71305F0028F6F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3EDFB81C71305F0028F6F5 /* LaunchScreen.storyboard */; };
+		3AC39B141C9554D0007817E1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3AC39B131C9554D0007817E1 /* .gitignore */; };
 		767C9265E9E47C49B3211867 /* Pods_tesDrop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8D1C1772DBED1DF8C84175 /* Pods_tesDrop.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		3A3EDFB61C71305F0028F6F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A3EDFB91C71305F0028F6F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A3EDFBB1C71305F0028F6F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AC39B131C9554D0007817E1 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7CFF9810A9DD2F63B56310A2 /* Pods-tesDrop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tesDrop.release.xcconfig"; path = "Pods/Target Support Files/Pods-tesDrop/Pods-tesDrop.release.xcconfig"; sourceTree = "<group>"; };
 		A0B7F9D761315371A960D308 /* Pods-tesDrop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tesDrop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tesDrop/Pods-tesDrop.debug.xcconfig"; sourceTree = "<group>"; };
 		ED8D1C1772DBED1DF8C84175 /* Pods_tesDrop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tesDrop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 			children = (
 				3A3EDFB81C71305F0028F6F5 /* LaunchScreen.storyboard */,
 				3A3EDFBB1C71305F0028F6F5 /* Info.plist */,
+				3AC39B131C9554D0007817E1 /* .gitignore */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC39B141C9554D0007817E1 /* .gitignore in Resources */,
 				3A3EDFBA1C71305F0028F6F5 /* LaunchScreen.storyboard in Resources */,
 				3A3EDFB71C71305F0028F6F5 /* Assets.xcassets in Resources */,
 				3A3EDFB51C71305F0028F6F5 /* Main.storyboard in Resources */,
