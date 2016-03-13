@@ -9,8 +9,8 @@ Time spent: ***** hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] User login and sign up for account
-- [ ] Camera and Gallery to upload images 
+- [x] User login and sign up for account
+- [x] Camera and Gallery to upload images 
 - [ ] Search and filter features
 - [ ] Details for each cell in the table view
 - [ ] My contribution page fo each user
