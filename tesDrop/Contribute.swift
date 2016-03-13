@@ -30,8 +30,12 @@ class Contribute: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         //
         // imageTapped()
         
-         customImagePicker()
+         //customImagePicker()
 
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         
     }
     

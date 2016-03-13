@@ -8,8 +8,6 @@
 
 import UIKit
 
-let goToHomeViewNotification = "goToHomeViewNotification"
-
 class Filter: UIViewController {
 
     var window: UIWindow?

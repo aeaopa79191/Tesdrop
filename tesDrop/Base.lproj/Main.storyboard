@@ -267,7 +267,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeTableViewCell" rowHeight="374" id="kxs-lH-VKN" customClass="homeTableViewCell" customModule="tesDrop" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="374"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="374"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kxs-lH-VKN" id="RAE-Sh-myh">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="373"/>
@@ -325,52 +325,17 @@
             </objects>
             <point key="canvasLocation" x="409" y="1027"/>
         </scene>
-        <!--Contribute-->
+        <!--Testing View Controller-->
         <scene sceneID="wJF-ec-eVO">
             <objects>
-                <viewController storyboardIdentifier="captureViewID" id="FM5-rh-gik" customClass="Contribute" customModule="tesDrop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="captureViewID" id="FM5-rh-gik" customClass="testingViewController" customModule="tesDrop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vKZ-zM-jPV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="G0x-4Z-eeP">
-                                <rect key="frame" x="20" y="72" width="95" height="117"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="gw1-tf-Tjg">
-                                <rect key="frame" x="148" y="72" width="95" height="117"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bhY-9v-f5n">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="8MR-p6-WJO">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7np-KF-v4j">
-                                <rect key="frame" x="16" y="7" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
-                            </button>
-                            <connections>
-                                <action selector="addBtn:" destination="FM5-rh-gik" id="6fx-sD-bQl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="i63-ia-Ipm">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DWN-lR-9Ha">
-                                <rect key="frame" x="272" y="7" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <segue destination="d4r-hn-etA" kind="presentation" identifier="selectToUpload" animates="NO" id="8Ng-Dg-cZD"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="bhY-9v-f5n"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="moreImageView" destination="gw1-tf-Tjg" id="luB-sH-8Qa"/>
-                        <outlet property="profileImageView" destination="G0x-4Z-eeP" id="1Rw-SA-4gN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyo-xU-c6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

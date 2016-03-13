@@ -20,12 +20,10 @@ class customizeTabBar: UITabBarController, UITabBarControllerDelegate {
         let middleImage:UIImage = UIImage(named:"mapButton")!
         let highlightedMiddleImage:UIImage = UIImage(named:"mapButton_highlighted")!
         
-        
         addCenterButtonWithImage(middleImage, highlightImage: highlightedMiddleImage)
         self.tabBar.barTintColor = UIColor.blackColor()
         
         //changeTabToMiddleTab(button)
-        
     }
     
     //MARK: TABBAR DELEAGATE
@@ -42,13 +40,13 @@ class customizeTabBar: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        if  self.selectedViewController == viewController {
-            print("Select one controller in tabbar twice")
-            return false
-        }
-        return true
-    }
+//    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+//        if  self.selectedViewController == viewController {
+//            print("Select one controller in tabbar twice")
+//            return false
+//        }
+//        return true
+//    }
     
     //MARK: MIDDLE TAB BAR HANDLER
     func addCenterButtonWithImage(buttonImage: UIImage, highlightImage:UIImage?)
@@ -70,33 +68,30 @@ class customizeTabBar: UITabBarController, UITabBarControllerDelegate {
             button.center = center;
         }
         
-       // button.addTarget(self, action: "changeTabToMiddleTab:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: "changeTabToMiddleTab:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view.addSubview(button)
     }
     
     
-    
-//    // First Responder will be middle tap
-//    func changeTabToMiddleTab(sender:UIButton)
-//    {
-//        
-//        let selectedIndex = Int(self.viewControllers!.count/2)
-//        self.selectedIndex = selectedIndex
-//        self.selectedViewController = (self.viewControllers as [AnyObject]?)?[selectedIndex] as? UIViewController
-//        dispatch_async(dispatch_get_main_queue(), {
-//            
-//            if self.isHighLighted == false{
-//                sender.highlighted = true;
-//                self.isHighLighted = true
-//            }else{
-//                sender.highlighted = false;
-//                self.isHighLighted = false
-//            }
-//        });
-//        
-//        sender.userInteractionEnabled = false
-//        
-//    }
+    // Go to middle tap
+    func changeTabToMiddleTab(sender:UIButton)
+    {
+        let selectedIndex = Int(self.viewControllers!.count/2)
+        self.selectedIndex = selectedIndex
+        self.selectedViewController = (self.viewControllers as [AnyObject]?)?[selectedIndex] as? UIViewController
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            if self.isHighLighted == false{
+                sender.highlighted = true;
+                self.isHighLighted = true
+            }else{
+                sender.highlighted = false;
+                self.isHighLighted = false
+            }
+        });
+        
+        sender.userInteractionEnabled = false
+    }
 
 }
