@@ -90,7 +90,7 @@ VI.User can select the file, and can download/email.
 
 ## License
 
-    Copyright [2016] [Zhipeng (Adrian) Mei, Carlos Osco, Ka Kin Chiu (Ken)]
+    Copyright [2016] [Zhipeng (Adrian) Mei, Carlos Osco, Ka Kin Chiu (Ken), Jennifer Kwan]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
