@@ -86,26 +86,26 @@ class Contribute: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     //    }
     
     
-    //    //Step 1: Picking a Picture from the Camera Roll
-    //    func imageTapped(img: AnyObject)
-    //    {
-    //        let vc = UIImagePickerController()
-    //        vc.delegate = self
-    //        vc.allowsEditing = true
-    //        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-    //        self.presentViewController(vc, animated: true, completion: nil)
-    //    }
-    
-    //    //Step 2: Implement the delegate
-    //    func imagePickerController(picker: UIImagePickerController,
-    //        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-    //            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-    //            editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-    //            profileImageView.image = editedImage
-    //            dismissViewControllerAnimated(true, completion: { () -> Void in
-    //                //self.performSegueWithIdentifier("selectToUpload", sender: nil)
-    //            })
-    //    }
+//        //Step 1: Picking a Picture from the Camera Roll
+//        func imageTapped(img: AnyObject)
+//        {
+//            let vc = UIImagePickerController()
+//            vc.delegate = self
+//            vc.allowsEditing = true
+//            vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//            self.presentViewController(vc, animated: true, completion: nil)
+//        }
+//    
+//        //Step 2: Implement the delegate
+//        func imagePickerController(picker: UIImagePickerController,
+//            didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//                let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//                editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+//                profileImageView.image = editedImage
+//                dismissViewControllerAnimated(true, completion: { () -> Void in
+//                    //self.performSegueWithIdentifier("selectToUpload", sender: nil)
+//                })
+//        }
     
     //    func resize(image: UIImage, newSize: CGSize) -> UIImage {
     //        let resizeImageView = UIImageView(frame: CGRectMake(0, 0, newSize.width, newSize.height))
@@ -119,15 +119,15 @@ class Contribute: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     //        return newImage
     //    }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        //self.performSegueWithIdentifier("selectToUpload", sender: nil)
-        let passThisImage = editedImage
-        let detailViewController = segue.destinationViewController as! Filter
-        detailViewController.readyImage = passThisImage!
-        
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        //self.performSegueWithIdentifier("selectToUpload", sender: nil)
+//        let passThisImage = editedImage
+//        let detailViewController = segue.destinationViewController as! Filter
+//        detailViewController.readyImage = passThisImage!
+//        
+//    }
     
     //    @IBAction func addBtn(sender: UIBarButtonItem) {
     //        let vc = UIImagePickerController()

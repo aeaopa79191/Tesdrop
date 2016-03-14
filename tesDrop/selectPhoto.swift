@@ -8,14 +8,20 @@
 
 import UIKit
 import Photos
+import BSImagePicker
+import PhotosUI
+
+protocol collecTionCellDelegate {
+    func userDidSelectedPhotos(userPhoto: UIImageAsset)
+}
 
 let reuseIdentifier = "PhotoCell"
-let albumName = "App Folder1"            //App specific folder name
+let albumName = "tesDrop"            //App specific folder name
 
 class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var albumFound : Bool = false
-    var assetCollection: PHAssetCollection = PHAssetCollection()
+    var assetCollection: PHAssetCollection = PHAssetCollection()  //tesDrop folder
     var photosAsset: PHFetchResult!
     var assetThumbnailSize:CGSize!
     
@@ -48,7 +54,32 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
         picker.delegate = self
         picker.allowsEditing = false
         self.presentViewController(picker, animated: true, completion: nil)
+        
+//        testingView()
     }
+    
+    //Custom Phot Library
+    func testingView(){
+        let vc = BSImagePickerViewController()        
+        bs_presentImagePickerController(vc, animated: true,
+            select: { (asset: PHAsset) -> Void in
+                // User selected an asset.
+                // Do something with it, start upload perhaps?
+            }, deselect: { (asset: PHAsset) -> Void in
+                // User deselected an assets.
+                // Do something, cancel upload?
+            }, cancel: { (assets: [PHAsset]) -> Void in
+                // User cancelled. And this where the assets currently selected.
+                //self.dismissViewControllerAnimated(true, completion: nil)
+                //NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+            }, finish: { (assets: [PHAsset]) -> Void in
+                // User finished with these assets
+            }, completion: nil)
+    }
+    
+    
+    
+    
     
     @IBOutlet var collectionView : UICollectionView!
     
@@ -118,6 +149,7 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if(segue.identifier == "viewLargePhoto"){
             if let controller:ViewPhoto = segue.destinationViewController as? ViewPhoto{
                 if let cell = sender as? UICollectionViewCell{
@@ -129,10 +161,18 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
                 }
             }
         }
+        
+        //Pass data from selectPhoto to Filter page
+        if(segue.identifier == "toFilterView"){
+            let passThisImageCollection = assetCollection
+            let detailViewController = segue.destinationViewController as! Filter
+            detailViewController.readyImageCollection = passThisImageCollection
+        }
+        
+        
     }
     
-    
-    
+
     
     
     //UICollectionViewDataSource Methods (Remove the "!" on variables in the function prototype)
@@ -169,15 +209,13 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
         return 1
     }
     
-    //func imagePickerController(picker: UIImagePickerController,
-    //        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-    
     //UIImagePickerControllerDelegate Methods
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         if let image: UIImage = info["UIImagePickerControllerOriginalImage"] as? UIImage{
             
             //Implement if allowing user to edit the selected image
             //let editedImage = info.objectForKey("UIImagePickerControllerEditedImage") as UIImage
+
             
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async(dispatch_get_global_queue(priority, 0), {
@@ -200,6 +238,18 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
     func imagePickerControllerDidCancel(picker: UIImagePickerController){
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
-
-
+    
+    
+ 
+    
+    
+    @IBAction func btnDone(sender: UIBarButtonItem) {
+        
+    }
+    
+    
+    
+    
 }
+
+

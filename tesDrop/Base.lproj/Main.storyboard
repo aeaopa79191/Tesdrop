@@ -325,22 +325,6 @@
             </objects>
             <point key="canvasLocation" x="409" y="1027"/>
         </scene>
-        <!--Testing View Controller-->
-        <scene sceneID="wJF-ec-eVO">
-            <objects>
-                <viewController storyboardIdentifier="captureViewID" id="FM5-rh-gik" customClass="testingViewController" customModule="tesDrop" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vKZ-zM-jPV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="bhY-9v-f5n"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yyo-xU-c6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1768" y="1027"/>
-        </scene>
         <!--Filter-->
         <scene sceneID="G0l-Ge-pgm">
             <objects>
@@ -349,36 +333,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rVK-NU-bVm">
-                                <rect key="frame" x="148" y="413" width="50" height="30"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="NGy-cn-NXb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Upload"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hg8-Hf-ez8">
+                                    <size key="itemSize" width="105" height="105"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="jZ1-01-XAm" customClass="PhotoThumbnail" customModule="tesDrop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="64" width="105" height="105"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dFA-wp-4WE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="105" height="105"/>
+                                        <connections>
+                                            <outlet property="imgView" destination="dFA-wp-4WE" id="jH2-ks-Kkp"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <action selector="onUpload:" destination="d4r-hn-etA" eventType="touchUpInside" id="JjC-c4-RNT"/>
+                                    <outlet property="dataSource" destination="d4r-hn-etA" id="UcL-76-cIs"/>
+                                    <outlet property="delegate" destination="d4r-hn-etA" id="UZj-ox-e8j"/>
                                 </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nas-B0-VQA">
-                                <rect key="frame" x="20" y="28" width="60" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" id="Z7e-KX-geG">
-                                <rect key="frame" x="88" y="36" width="226" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem width="113" style="plain" systemItem="fixedSpace" id="3Wi-ex-dlF"/>
+                        <barButtonItem title="Upload" id="whf-5d-X2F"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="ckN-yI-PQp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hdT-nP-V2X">
+                            <connections>
+                                <action selector="btnCancel:" destination="d4r-hn-etA" id="2ut-Pt-crZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="captionField" destination="Z7e-KX-geG" id="76z-2Z-3r4"/>
-                        <outlet property="uplodaImage" destination="nas-B0-VQA" id="Mh8-YQ-gGf"/>
+                        <outlet property="collectionView" destination="NGy-cn-NXb" id="feF-JQ-AbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4b-Nd-25M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2150" y="1027"/>
+            <point key="canvasLocation" x="1581" y="2448"/>
         </scene>
         <!--Home-->
         <scene sceneID="Mpu-QK-iXl">
@@ -533,6 +545,13 @@
                         <barButtonItem systemItem="organize" id="OrZ-KG-qgC">
                             <connections>
                                 <action selector="btnPhotoAlbum:" destination="stV-Xk-q5p" id="dBc-Vl-HFZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="223" style="plain" systemItem="fixedSpace" id="j7y-xi-l9R"/>
+                        <barButtonItem systemItem="done" id="bpz-UL-esx">
+                            <connections>
+                                <action selector="btnDone:" destination="stV-Xk-q5p" id="kO9-yM-OQ2"/>
+                                <segue destination="d4r-hn-etA" kind="push" identifier="toFilterView" id="9ul-sl-Inz"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>

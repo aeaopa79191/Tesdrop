@@ -26,6 +26,7 @@
 		3A4040751C9631450012E952 /* selectPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4040741C9631450012E952 /* selectPhoto.swift */; };
 		3A4040771C9631930012E952 /* ViewPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4040761C9631930012E952 /* ViewPhoto.swift */; };
 		3A4040791C9631C30012E952 /* PhotoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4040781C9631C30012E952 /* PhotoThumbnail.swift */; };
+		3A40407B1C9671BD0012E952 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A40407A1C9671BD0012E952 /* Photos.framework */; };
 		3AC39B141C9554D0007817E1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3AC39B131C9554D0007817E1 /* .gitignore */; };
 		767C9265E9E47C49B3211867 /* Pods_tesDrop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8D1C1772DBED1DF8C84175 /* Pods_tesDrop.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		3A4040741C9631450012E952 /* selectPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectPhoto.swift; sourceTree = "<group>"; };
 		3A4040761C9631930012E952 /* ViewPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPhoto.swift; sourceTree = "<group>"; };
 		3A4040781C9631C30012E952 /* PhotoThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbnail.swift; sourceTree = "<group>"; };
+		3A40407A1C9671BD0012E952 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		3AC39B131C9554D0007817E1 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7CFF9810A9DD2F63B56310A2 /* Pods-tesDrop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tesDrop.release.xcconfig"; path = "Pods/Target Support Files/Pods-tesDrop/Pods-tesDrop.release.xcconfig"; sourceTree = "<group>"; };
 		A0B7F9D761315371A960D308 /* Pods-tesDrop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tesDrop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tesDrop/Pods-tesDrop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A40407B1C9671BD0012E952 /* Photos.framework in Frameworks */,
 				767C9265E9E47C49B3211867 /* Pods_tesDrop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,7 +84,7 @@
 		3A2426551C95416C004D42D9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3A4040731C9631200012E952 /* Album testing */,
+				3A4040731C9631200012E952 /* Photos Selection */,
 				3A24266F1C9547B6004D42D9 /* Visual Design */,
 				3A24266E1C95479A004D42D9 /* Login/SignUp */,
 				3A2426701C9547E0004D42D9 /* Upload */,
@@ -170,14 +173,14 @@
 			path = tesDrop;
 			sourceTree = "<group>";
 		};
-		3A4040731C9631200012E952 /* Album testing */ = {
+		3A4040731C9631200012E952 /* Photos Selection */ = {
 			isa = PBXGroup;
 			children = (
 				3A4040741C9631450012E952 /* selectPhoto.swift */,
 				3A4040761C9631930012E952 /* ViewPhoto.swift */,
 				3A4040781C9631C30012E952 /* PhotoThumbnail.swift */,
 			);
-			name = "Album testing";
+			name = "Photos Selection";
 			sourceTree = "<group>";
 		};
 		80F13D99498E2B072BB7172A /* Pods */ = {
@@ -192,6 +195,7 @@
 		9AFCC835539C48CA70887E11 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A40407A1C9671BD0012E952 /* Photos.framework */,
 				ED8D1C1772DBED1DF8C84175 /* Pods_tesDrop.framework */,
 			);
 			name = Frameworks;
