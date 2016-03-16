@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import BSImagePicker
 import PhotosUI
+import Parse
 
 protocol collecTionCellDelegate {
     func userDidSelectedPhotos(userPhoto: UIImageAsset)
@@ -137,10 +138,10 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
             thumbnail = result!
             
             PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                //let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(thumbnail)
-                //let assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
+                let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(thumbnail)
+                let assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
                 if let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: self.assetCollection, assets: self.photosAsset) {
-                    //albumChangeRequest.addAssets([assetPlaceholder!])
+                    albumChangeRequest.addAssets([assetPlaceholder!])
                 }
                 }, completionHandler: {(success, error)in
                     dispatch_async(dispatch_get_main_queue(), {
@@ -322,6 +323,7 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
         
     }
     
+
     
     
     

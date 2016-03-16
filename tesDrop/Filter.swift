@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import Parse
 
 class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
@@ -16,6 +17,7 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     @IBOutlet weak var collectionView: UICollectionView!
     //@IBOutlet weak var captionField: UITextField!
     //@IBOutlet weak var uplodaImage: UIImageView!
+    var uplodaImage: UIImageView!
     
     //var readyImage: UIImage?
     var readyImageCollection: PHAssetCollection = PHAssetCollection()
@@ -49,12 +51,15 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         //Modify the cell
         let asset: PHAsset = self.photosAsset[indexPath.item] as! PHAsset
         
+        
         // Create options for retrieving image (Degrades quality if using .Fast)
         //        let imageOptions = PHImageRequestOptions()
         //        imageOptions.resizeMode = PHImageRequestOptionsResizeMode.Fast
         PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: self.assetThumbnailSize, contentMode: .AspectFill, options: nil, resultHandler: {(result, info)in
             if let image = result {
                 cell.setThumbnailImage(image)
+                print("what is this ?\(image)")
+               // self.uplodaImage.image = result
             }
         })
         return cell
@@ -101,28 +106,59 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     }
     
     @IBAction func onUpload(sender: AnyObject) {
-//        userData.postUserImage(uplodaImage.image, withCaption: captionField.text) { (success: Bool, error: NSError?) -> Void in
-//            if success {
-//                print("Upload succesfully")
-//                self.uplodaImage.image = nil
-//                self.captionField.text = ""
-//                
-//                NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
-//                
-//                
-//                //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
-//                //                self.navigationController!.pushViewController(VC1, animated: true)
-//                
-//            }
-//            else {
-//                print("Can't post to parse")
-//            }
-//        }
+        
+        
+        userData.postUserImage(uplodaImage.image, withCaption: nil) { (success: Bool, error: NSError?) -> Void in
+            if success {
+                print("Upload succesfully")
+                self.uplodaImage.image = nil
+                //self.captionField.text = ""
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+                
+                
+                //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
+                //                self.navigationController!.pushViewController(VC1, animated: true)
+                
+            }
+            else {
+                print("Can't post to parse")
+            }
+        }
         
     }
     
-    
-    
+//    func saveImages(imagesArray:NSArray){
+//        for var i = 0; i < imagesArray.count; i++
+//        {
+//            let objectForSave:PFObject = PFObject(className: "ClassName")
+//            let imageData:NSData = NSData(data: UIImagePNGRepresentation(imagesArray.objectAtIndex(i) as! UIImage)!)
+//            
+//            let imageFile:PFFile = PFFile(data: imageData)!
+//            imageFile.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+//                if success{
+//                    objectForSave.setObject(imageFile, forKey: "Image")
+//                    
+//                    objectForSave.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+//                        if success{
+//                            //do smth
+//                        }else{
+//                            print(error)
+//                        }
+//                    })
+//                    
+//                }else{
+//                    print(error)
+//                }
+//                
+//                }, progressBlock: { (progress:Int32) -> Void in
+//                    
+//            })
+//            
+//            
+//        }
+//    }
+
  
 
 }
