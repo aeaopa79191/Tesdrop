@@ -48,35 +48,110 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
         
     }
     @IBAction func btnPhotoAlbum(sender : AnyObject) {
-        let picker : UIImagePickerController = UIImagePickerController()
-        picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
-        picker.delegate = self
-        picker.allowsEditing = false
-        self.presentViewController(picker, animated: true, completion: nil)
+//        let picker : UIImagePickerController = UIImagePickerController()
+//        picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//        picker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
+//        picker.delegate = self
+//        picker.allowsEditing = false
+//        self.presentViewController(picker, animated: true, completion: nil)
         
-//        testingView()
+        testingView()
     }
     
+    
+    
+
     //Custom Phot Library
     func testingView(){
-        let vc = BSImagePickerViewController()        
+        
+      
+        
+        
+        
+        let allAssets = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: nil)
+        var evenAssetIds = [String]()
+        
+        allAssets.enumerateObjectsUsingBlock { (asset, idx, stop) -> Void in
+            if let asset = asset as? PHAsset where idx % 2 == 0 {
+                evenAssetIds.append(asset.localIdentifier)
+            }
+        }
+        
+        
+        
+        let evenAssets = PHAsset.fetchAssetsWithLocalIdentifiers(evenAssetIds, options: nil)
+        
+        let vc = BSImagePickerViewController()
+        vc.maxNumberOfSelections = 6
+        //vc.takePhotoIcon = UIImage(named: "chat")
+
+        
+        //***** Design *****
+        vc.albumButton.tintColor = UIColor.greenColor()
+        vc.cancelButton.tintColor = UIColor.redColor()
+        vc.doneButton.tintColor = UIColor.purpleColor()
+        vc.selectionCharacter = "✓"
+        vc.selectionFillColor = UIColor.grayColor()
+        vc.selectionStrokeColor = UIColor.yellowColor()
+        vc.selectionShadowColor = UIColor.redColor()
+        vc.selectionTextAttributes[NSForegroundColorAttributeName] = UIColor.lightGrayColor()
+        vc.cellsPerRow = {(verticalSize: UIUserInterfaceSizeClass, horizontalSize: UIUserInterfaceSizeClass) -> Int in
+            switch (verticalSize, horizontalSize) {
+            case (.Compact, .Regular): // iPhone5-6 portrait
+                return 2
+            case (.Compact, .Compact): // iPhone5-6 landscape
+                return 2
+            case (.Regular, .Regular): // iPad portrait/landscape
+                return 3
+            default:
+                return 2
+            }
+        }
+        
+        
         bs_presentImagePickerController(vc, animated: true,
             select: { (asset: PHAsset) -> Void in
-                // User selected an asset.
-                // Do something with it, start upload perhaps?
+                print("Selected: \(asset)")
+              
+                self.getAssetThumbnail(asset)
+                
+                
+                
+                
+                
             }, deselect: { (asset: PHAsset) -> Void in
-                // User deselected an assets.
-                // Do something, cancel upload?
+                print("Deselected: \(asset)")
             }, cancel: { (assets: [PHAsset]) -> Void in
-                // User cancelled. And this where the assets currently selected.
-                //self.dismissViewControllerAnimated(true, completion: nil)
-                //NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+                print("Cancel: \(assets)")
             }, finish: { (assets: [PHAsset]) -> Void in
-                // User finished with these assets
+                print("Finish: \(assets)")
             }, completion: nil)
     }
-    
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.defaultManager()
+        let option = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        option.synchronous = true
+        print("working")
+        manager.requestImageForAsset(asset, targetSize: CGSize(width: 100.0, height: 100.0), contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
+            thumbnail = result!
+            
+            PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+                //let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(thumbnail)
+                //let assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
+                if let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: self.assetCollection, assets: self.photosAsset) {
+                    //albumChangeRequest.addAssets([assetPlaceholder!])
+                }
+                }, completionHandler: {(success, error)in
+                    dispatch_async(dispatch_get_main_queue(), {
+                        NSLog("Adding Image to Library -> %@", (success ? "Sucess":"Error!"))
+//                        vc.dismissViewControllerAnimated(true, completion: nil)
+                    })
+            })
+            
+        })
+        return thumbnail
+    }
     
     
     
