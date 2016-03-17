@@ -128,6 +128,8 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
                 print("Finish: \(assets)")
             }, completion: nil)
     }
+    
+    
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.defaultManager()
         let option = PHImageRequestOptions()
@@ -323,6 +325,27 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
         
     }
     
+    
+    //*********** testing **********
+//    func imageTapped(img: AnyObject)
+//    {
+//        let vc = UIImagePickerController()
+//        vc.delegate = self
+//        vc.allowsEditing = true
+//        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//        self.presentViewController(vc, animated: true, completion: nil)
+//    }
+//    
+//    func imagePickerController(picker: UIImagePickerController,
+//        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//            let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+//            
+//            profileImageView.image = editedImage
+//            dismissViewControllerAnimated(true, completion: { () -> Void in
+//            })
+//    }
+
 
     
     

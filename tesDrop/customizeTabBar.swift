@@ -28,7 +28,7 @@ class customizeTabBar: UITabBarController, UITabBarControllerDelegate {
     
     //MARK: TABBAR DELEAGATE
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        if !viewController.isKindOfClass(Contribute)
+        if !viewController.isKindOfClass(Filter)
         {
             button.userInteractionEnabled = true
             button.highlighted = false

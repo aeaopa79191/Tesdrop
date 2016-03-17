@@ -30,7 +30,7 @@ class Home: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
         
-        let query = PFQuery(className: "UserMedia")
+        let query = PFQuery(className: "userData")
         query.orderByDescending("_created_at")
         query.limit = 20
         
@@ -78,7 +78,7 @@ class Home: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     }
     
     func refresh(sender: AnyObject) {
-        let query = PFQuery(className: "UserMedia")
+        let query = PFQuery(className: "userData")
         query.orderByDescending("_created_at")
         query.limit = 20
         

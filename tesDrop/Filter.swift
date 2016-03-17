@@ -15,21 +15,17 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     var window: UIWindow?
     
     @IBOutlet weak var collectionView: UICollectionView!
-    //@IBOutlet weak var captionField: UITextField!
-    //@IBOutlet weak var uplodaImage: UIImageView!
-    var uplodaImage: UIImageView!
-    
-    //var readyImage: UIImage?
+    @IBOutlet weak var imagePhoto: UIImageView!
+
     var readyImageCollection: PHAssetCollection = PHAssetCollection()
     var photosAsset: PHFetchResult!
     var assetThumbnailSize:CGSize!
+    var photoArray: NSArray = []
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //uplodaImage.image = readyImageCollection
         // Do any additional setup after loading the view.
     }
     
@@ -50,16 +46,47 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         
         //Modify the cell
         let asset: PHAsset = self.photosAsset[indexPath.item] as! PHAsset
-        
-        
+//        let photoCount = photosAsset.count
+//        print(photoCount)
+//        for index in 1...photoCount{
+//            photoArray[index] = asset
+//        }
+//        
         // Create options for retrieving image (Degrades quality if using .Fast)
         //        let imageOptions = PHImageRequestOptions()
         //        imageOptions.resizeMode = PHImageRequestOptionsResizeMode.Fast
         PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: self.assetThumbnailSize, contentMode: .AspectFill, options: nil, resultHandler: {(result, info)in
             if let image = result {
-                cell.setThumbnailImage(image)
+
+               // cell.setThumbnailImage(image)
                 print("what is this ?\(image)")
-               // self.uplodaImage.image = result
+                cell.imgView.image = result!
+                let omgvIEW = cell.imgView.image
+                print(image)
+                
+                
+                userData.postUserImage(omgvIEW, withCaption: "tseting") { (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        print("Upload succesfully")
+                        
+                        //erase imageview after succes upload
+                        //self.imagePhoto!.image = nil
+                        //self.captionField.text = ""
+                        
+                        NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+                        
+                        
+                        //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
+                        //                self.navigationController!.pushViewController(VC1, animated: true)
+                        
+                    }
+                    else {
+                        print("Can't post to parse")
+                    }
+                }
+                
+                
+                
             }
         })
         return cell
@@ -106,58 +133,39 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     }
     
     @IBAction func onUpload(sender: AnyObject) {
-        
-        
-        userData.postUserImage(uplodaImage.image, withCaption: nil) { (success: Bool, error: NSError?) -> Void in
-            if success {
-                print("Upload succesfully")
-                self.uplodaImage.image = nil
-                //self.captionField.text = ""
+        let photoCount = photosAsset.count - 1
+        if(photosAsset.count > 0){
+            //for loop to upload multiple images all at once
+            for index in 0...photoCount {
+                print("\(index) times \(photoCount) is \(index * photoCount)")
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
-                
-                
-                //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
-                //                self.navigationController!.pushViewController(VC1, animated: true)
-                
-            }
-            else {
-                print("Can't post to parse")
+//                userData.postUserImage(imagePhoto.image, withCaption: "tseting") { (success: Bool, error: NSError?) -> Void in
+//                    if success {
+//                        print("Upload succesfully")
+//                        
+//                        //erase imageview after succes upload
+//                        self.imagePhoto!.image = nil
+//                        //self.captionField.text = ""
+//                        
+//                        NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+//                        
+//                        
+//                        //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
+//                        //                self.navigationController!.pushViewController(VC1, animated: true)
+//                        
+//                    }
+//                    else {
+//                        print("Can't post to parse")
+//                    }
+//                }
+         
+            
             }
         }
         
     }
     
-//    func saveImages(imagesArray:NSArray){
-//        for var i = 0; i < imagesArray.count; i++
-//        {
-//            let objectForSave:PFObject = PFObject(className: "ClassName")
-//            let imageData:NSData = NSData(data: UIImagePNGRepresentation(imagesArray.objectAtIndex(i) as! UIImage)!)
-//            
-//            let imageFile:PFFile = PFFile(data: imageData)!
-//            imageFile.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-//                if success{
-//                    objectForSave.setObject(imageFile, forKey: "Image")
-//                    
-//                    objectForSave.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-//                        if success{
-//                            //do smth
-//                        }else{
-//                            print(error)
-//                        }
-//                    })
-//                    
-//                }else{
-//                    print(error)
-//                }
-//                
-//                }, progressBlock: { (progress:Int32) -> Void in
-//                    
-//            })
-//            
-//            
-//        }
-//    }
+
 
  
 
