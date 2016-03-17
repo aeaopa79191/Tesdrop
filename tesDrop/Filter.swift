@@ -15,12 +15,12 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     var window: UIWindow?
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var imagePhoto: UIImageView!
 
     var readyImageCollection: PHAssetCollection = PHAssetCollection()
     var photosAsset: PHFetchResult!
     var assetThumbnailSize:CGSize!
-    var photoArray: NSArray = []
+    
+    var pdfFile: NSData!
 
 
     
@@ -63,27 +63,29 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
                 cell.imgView.image = result!
                 let omgvIEW = cell.imgView.image
                 print(image)
+                self.pdfFile = NSData.convertImageToPDF(omgvIEW!)
+                print("converted pdf")
                 
                 
-                userData.postUserImage(omgvIEW, withCaption: "tseting") { (success: Bool, error: NSError?) -> Void in
-                    if success {
-                        print("Upload succesfully")
-                        
-                        //erase imageview after succes upload
-                        //self.imagePhoto!.image = nil
-                        //self.captionField.text = ""
-                        
-                        NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
-                        
-                        
-                        //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
-                        //                self.navigationController!.pushViewController(VC1, animated: true)
-                        
-                    }
-                    else {
-                        print("Can't post to parse")
-                    }
-                }
+//                userData.postUserImage(omgvIEW, withCaption: "tseting") { (success: Bool, error: NSError?) -> Void in
+//                    if success {
+//                        print("Upload succesfully")
+//                        
+//                        //erase imageview after succes upload
+//                        //self.imagePhoto!.image = nil
+//                        //self.captionField.text = ""
+//                        
+//                        NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+//                        
+//                        
+//                        //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
+//                        //                self.navigationController!.pushViewController(VC1, animated: true)
+//                        
+//                    }
+//                    else {
+//                        print("Can't post to parse")
+//                    }
+//                }
                 
                 
                 
@@ -133,35 +135,29 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     }
     
     @IBAction func onUpload(sender: AnyObject) {
-        let photoCount = photosAsset.count - 1
-        if(photosAsset.count > 0){
-            //for loop to upload multiple images all at once
-            for index in 0...photoCount {
-                print("\(index) times \(photoCount) is \(index * photoCount)")
-                
-//                userData.postUserImage(imagePhoto.image, withCaption: "tseting") { (success: Bool, error: NSError?) -> Void in
-//                    if success {
-//                        print("Upload succesfully")
-//                        
-//                        //erase imageview after succes upload
-//                        self.imagePhoto!.image = nil
-//                        //self.captionField.text = ""
-//                        
-//                        NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
-//                        
-//                        
-//                        //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
-//                        //                self.navigationController!.pushViewController(VC1, animated: true)
-//                        
-//                    }
-//                    else {
-//                        print("Can't post to parse")
-//                    }
-//                }
-         
+  
+                userData.postUserImage(pdfFile, withCaption: "pdf upload") { (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        print("Upload succesfully")
+                        
+                        //erase imageview after succes upload
+                        //self.imagePhoto!.image = nil
+                        //self.captionField.text = ""
+                        
+                        NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+                        
+                        
+                        //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
+                        //                self.navigationController!.pushViewController(VC1, animated: true)
+                        
+                    }
+                    else {
+                        print("Can't post to parse")
+                    }
+                }
+        
             
-            }
-        }
+       
         
     }
     

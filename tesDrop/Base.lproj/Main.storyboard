@@ -262,21 +262,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="374" sectionHeaderHeight="28" sectionFooterHeight="28" id="xTW-Y3-Ie2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeTableViewCell" rowHeight="374" id="kxs-lH-VKN" customClass="homeTableViewCell" customModule="tesDrop" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="homeTableViewCell" rowHeight="374" id="kxs-lH-VKN" customClass="homeTableViewCell" customModule="tesDrop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="374"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kxs-lH-VKN" id="RAE-Sh-myh">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="373"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="373"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qHW-Ad-Hag">
-                                                    <rect key="frame" x="25" y="8" width="271" height="254"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sd9-TC-NMa">
                                                     <rect key="frame" x="118" y="287" width="85" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -288,11 +284,17 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imageLabel" destination="Sd9-TC-NMa" id="Tgc-zl-hgH"/>
-                                            <outlet property="profileImageView" destination="qHW-Ad-Hag" id="OlW-m1-V4t"/>
+                                            <outlet property="webView" destination="eyC-f1-dc3" id="qTL-7s-ekg"/>
+                                            <segue destination="vPF-QV-7AG" kind="push" identifier="pdfviewer" id="mMV-oH-zbW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <webView contentMode="scaleToFill" id="eyC-f1-dc3">
+                                <rect key="frame" x="25" y="232" width="271" height="254"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -305,6 +307,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSi-bW-B0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1365" y="1027"/>
+        </scene>
+        <!--BasicPDF Viewer-->
+        <scene sceneID="WSa-t0-wdA">
+            <objects>
+                <viewController id="vPF-QV-7AG" customClass="PDFKBasicPDFViewer" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dgB-SE-jQ1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qkb-C8-DG8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O3d-p9-0zc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1741" y="1027"/>
         </scene>
         <!--Customize Tab Bar-->
         <scene sceneID="3VV-b7-vDI">
@@ -345,7 +362,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="jZ1-01-XAm" customClass="PhotoThumbnail" customModule="tesDrop" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="105" height="105"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
@@ -369,10 +386,6 @@
                                     <outlet property="delegate" destination="d4r-hn-etA" id="UZj-ox-e8j"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="mv1-8Q-Vq8">
-                                <rect key="frame" x="47" y="350" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -394,7 +407,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="collectionView" destination="NGy-cn-NXb" id="feF-JQ-AbQ"/>
-                        <outlet property="imagePhoto" destination="mv1-8Q-Vq8" id="PcI-P6-Mz3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4b-Nd-25M" userLabel="First Responder" sceneMemberID="firstResponder"/>

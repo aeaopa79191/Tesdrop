@@ -8,16 +8,23 @@
 
 import UIKit
 import Parse
+import M13PDFKit
 
 class Home: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
     @IBOutlet weak var tableView: UITableView!
+    var path: String!
     
     var mediaArr: [PFObject]?
     var refreshControl:UIRefreshControl!
+
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         tableView.dataSource = self
         tableView.delegate = self
         //tableView.estimatedRowHeight = 220.0
@@ -43,6 +50,8 @@ class Home: UIViewController, UITableViewDelegate, UITableViewDataSource  {
             }
         }
         
+        
+       
         // Do any additional setup after loading the view.
     }
     
@@ -63,17 +72,37 @@ class Home: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("homeTableViewCell", forIndexPath: indexPath) as! homeTableViewCell
         let media = mediaArr![indexPath.row]
+        
         cell.imageLabel.text = media["caption"] as? String
         let userImageFile = media["media"] as! PFFile
-        userImageFile.getDataInBackgroundWithBlock {
-            (imageData: NSData?, error: NSError?) -> Void in
-            if error == nil {
-                if let imageData = imageData {
-                    let image = UIImage(data:imageData)
-                    cell.profileImageView.image = image
-                }
-            }
-        }
+        
+        path = userImageFile.url! as String
+        print("this is path \(path)")
+        //userDefaults.setValue(path, forKey: "pdfstring")
+
+     
+        let fileUrl = NSURL(string: path)
+        cell.webView.loadRequest(NSURLRequest(URL: fileUrl!))
+
+        
+    
+//                            let url = NSURL.fileURLWithPath(self.path)
+//                            cell.webView.loadRequest(NSURLRequest(URL: url))
+        
+//        userImageFile.getDataInBackgroundWithBlock {
+//            (imageData: NSData?, error: NSError?) -> Void in
+//            if error == nil {
+//                if let imageData = imageData {
+//                    //let image = UIImage(data:imageData)
+//                    //cell.profileImageView.image = image
+//                    
+//
+//                }
+//            }
+        
+            
+            
+        //}
         return cell
     }
     
@@ -96,5 +125,29 @@ class Home: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     override func viewWillAppear(animated: Bool) {
         self.refresh(tableView)
     }
+    
+    
+    
+    //******** testing PDF view
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "pdfviewer"){
+            //Create the document for the viewer when the segue is performed.
+            let viewer: PDFKBasicPDFViewer = segue.destinationViewController as! PDFKBasicPDFViewer
+            
+            //Load the document (pdfUrl represents the path on the phone of the pdf document you wish to load)
+            //let omgPath = userDefaults.stringForKey("pdfstring")
+
+//
+            
+            
+           // let document: PDFKDocument = PDFKDocument(contentsOfFile: "http://agile-tundra-85978.herokuapp.com/Parse/files/instaPicsjanlcw7i4r49r4f/a4e2224c79fb73cf54c0ff6e351f3d44_pdf.pdf", password: nil)
+           // viewer.loadDocument(document)
+        }
+        
+    }
+    
+
+    
 
 }

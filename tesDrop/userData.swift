@@ -10,12 +10,27 @@ import UIKit
 import Parse
 
 class userData: NSObject {
-    class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
+//    class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
+//        // Create Parse object PFObject
+//        let media = PFObject(className: "userData")
+//        
+//        // Add relevant fields to the object
+//        media["media"] = getPFFileFromImage(image) // PFFile column type
+//        media["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
+//        media["caption"] = caption
+//        media["likesCount"] = 0
+//        media["commentsCount"] = 0
+//        
+//        // Save object (following function will save the object in Parse asynchronously)
+//        media.saveInBackgroundWithBlock(completion)
+//    }
+
+    class func postUserImage(pdfFile: NSData?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
         let media = PFObject(className: "userData")
         
         // Add relevant fields to the object
-        media["media"] = getPFFileFromImage(image) // PFFile column type
+        media["media"] = getPFFileFromPDF(pdfFile) // PFFile column type
         media["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
         media["caption"] = caption
         media["likesCount"] = 0
@@ -39,6 +54,15 @@ class userData: NSObject {
             if let imageData = UIImagePNGRepresentation(image) {
                 return PFFile(name: "image.png", data: imageData)
             }
+        }
+        return nil
+    }
+    
+    class func getPFFileFromPDF(pdfFile: NSData?) -> PFFile? {
+        if let pdfFile = pdfFile {
+            //if let pdfData = UIImagePNGRepresentation(pdfFile) {
+                return PFFile(name: "pdf.pdf", data: pdfFile)
+            //}
         }
         return nil
     }

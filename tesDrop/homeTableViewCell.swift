@@ -10,8 +10,10 @@ import UIKit
 
 class homeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var profileImageView: UIImageView!
+   // @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var imageLabel: UILabel!
+    
+    @IBOutlet weak var webView: UIWebView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
