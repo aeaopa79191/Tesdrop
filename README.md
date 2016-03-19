@@ -32,6 +32,9 @@ Here we have our App's sketches with regards of each screen with key elements.
 https://www.dropbox.com/s/rjrerfzg9e7ktgu/justin_s_layout_1.pdf?dl=0 
 https://www.dropbox.com/s/i4nwt30i5a2v1pk/tesdrop_meeting_feb_20.pdf?dl=0
 
+###Data Schema
+![UML Diagram](Document 1.png "UML Diagram")
+
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
