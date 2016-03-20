@@ -7,6 +7,5 @@ target 'tesDrop' do
     pod “Parse”
     pod “AFNetworking”
     pod "BSImagePicker", "~> 2.2"
-    pod 'M13PDFKit', '1.0.2'
 end
 

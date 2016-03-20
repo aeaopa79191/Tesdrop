@@ -6,62 +6,52 @@
 	<dict>
 		<key>AFNetworking.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>BSGridCollectionViewLayout.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>BSImagePicker-BSImagePicker.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>BSImagePicker.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>M13PDFKit-M13PDFKitResources.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>M13PDFKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-tesDrop.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>TTOpenInAppActivity.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>UIImageViewModeScaleAspect.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>08CAD3729C176105080763F29A98AFA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0FF38C485BD8E73F614C919F834D6EAB</key>
 		<dict>
 			<key>primary</key>
@@ -72,22 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4263BEC0E421CBC3476A0D619D6A235F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5056C707EE63FCBCB465F1E387B9404D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>8AA3DDB8797222294E1288CB197A8347</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>932C2BBB5BD730E61475947CF8BAC7D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -103,11 +78,6 @@
 			<true/>
 		</dict>
 		<key>C59EE95662AD4757E7FCE220DB1AFA41</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CF658A88E8561D9864067744094F7B54</key>
 		<dict>
 			<key>primary</key>
 			<true/>

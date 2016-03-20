@@ -8,29 +8,35 @@
 
 import UIKit
 import Parse
+import PhotosUI
+
 
 class userData: NSObject {
-//    class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
-//        // Create Parse object PFObject
-//        let media = PFObject(className: "userData")
-//        
-//        // Add relevant fields to the object
-//        media["media"] = getPFFileFromImage(image) // PFFile column type
-//        media["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
-//        media["caption"] = caption
-//        media["likesCount"] = 0
-//        media["commentsCount"] = 0
-//        
-//        // Save object (following function will save the object in Parse asynchronously)
-//        media.saveInBackgroundWithBlock(completion)
-//    }
-
-    class func postUserImage(pdfFile: NSData?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
+    
+    class func postUserImage(images: [UIImage], withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
-        let media = PFObject(className: "userData")
+        let media = PFObject(className: "UserMedia")
         
         // Add relevant fields to the object
-        media["media"] = getPFFileFromPDF(pdfFile) // PFFile column type
+        let imgCount = (images.count) as Int
+        print("img Count is \(imgCount)")
+        
+//        for index in 0...imgCount{
+//            print("Current image on upload  is \(images)")
+//            let image = images[index] as? UIImage
+//            media["media"] = getPFFileFromImage(image) // PFFile column type
+//
+//        }
+        
+        if (imgCount >= 0 ){
+            for index in 0..<imgCount {
+                print(index)
+                print("Current image on upload  is \(images)")
+                let image = images[index] as? UIImage
+                media["media\(index)"] = getPFFileFromImage(image) // PFFile column type
+            }
+        }
+        
         media["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
         media["caption"] = caption
         media["likesCount"] = 0
@@ -58,12 +64,5 @@ class userData: NSObject {
         return nil
     }
     
-    class func getPFFileFromPDF(pdfFile: NSData?) -> PFFile? {
-        if let pdfFile = pdfFile {
-            //if let pdfData = UIImagePNGRepresentation(pdfFile) {
-                return PFFile(name: "pdf.pdf", data: pdfFile)
-            //}
-        }
-        return nil
-    }
+    
 }

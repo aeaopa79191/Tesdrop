@@ -15,6 +15,4 @@ class PhotoThumbnail: UICollectionViewCell {
     func setThumbnailImage(thumbnailImage: UIImage){
         self.imgView.image = thumbnailImage
     }
-    
-    
 }

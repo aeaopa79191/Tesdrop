@@ -8,24 +8,29 @@
 
 import UIKit
 import Photos
-import Parse
 
 class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     var window: UIWindow?
     
     @IBOutlet weak var collectionView: UICollectionView!
-
+    //@IBOutlet weak var captionField: UITextField!
+    //@IBOutlet weak var uplodaImage: UIImageView!
+    
+    //var readyImage: UIImage?
     var readyImageCollection: PHAssetCollection = PHAssetCollection()
     var photosAsset: PHFetchResult!
     var assetThumbnailSize:CGSize!
     
-    var pdfFile: NSData!
+    var imageReadyUpload: [UIImage]!
+
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //uplodaImage.image = readyImageCollection
         // Do any additional setup after loading the view.
     }
     
@@ -46,51 +51,42 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         
         //Modify the cell
         let asset: PHAsset = self.photosAsset[indexPath.item] as! PHAsset
-//        let photoCount = photosAsset.count
-//        print(photoCount)
-//        for index in 1...photoCount{
-//            photoArray[index] = asset
-//        }
-//        
+        
         // Create options for retrieving image (Degrades quality if using .Fast)
         //        let imageOptions = PHImageRequestOptions()
         //        imageOptions.resizeMode = PHImageRequestOptionsResizeMode.Fast
         PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: self.assetThumbnailSize, contentMode: .AspectFill, options: nil, resultHandler: {(result, info)in
             if let image = result {
+                cell.setThumbnailImage(image)
+                
 
-               // cell.setThumbnailImage(image)
-                print("what is this ?\(image)")
-                cell.imgView.image = result!
-                let omgvIEW = cell.imgView.image
-                print(image)
-                self.pdfFile = NSData.convertImageToPDF(omgvIEW!)
-                print("converted pdf")
+                //imageReadyUpload
                 
+                let imgCount = self.photosAsset.count
+                for index in 1...imgCount{
+                    print("\(index) " )
+                    self.imageReadyUpload[index] = image
+                }
                 
-//                userData.postUserImage(omgvIEW, withCaption: "tseting") { (success: Bool, error: NSError?) -> Void in
+//                userData.postUserImage(image, withCaption: "captionField.text") { (success: Bool, error: NSError?) -> Void in
 //                    if success {
 //                        print("Upload succesfully")
-//                        
-//                        //erase imageview after succes upload
-//                        //self.imagePhoto!.image = nil
-//                        //self.captionField.text = ""
+//                        //self.uplodaImage.image = nil
+////                        self.captionField.text = ""
 //                        
 //                        NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
-//                        
-//                        
-//                        //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
-//                        //                self.navigationController!.pushViewController(VC1, animated: true)
 //                        
 //                    }
 //                    else {
 //                        print("Can't post to parse")
 //                    }
 //                }
-                
-                
-                
+   
             }
         })
+        
+        
+        
         return cell
     }
     
@@ -135,34 +131,28 @@ class Filter: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     }
     
     @IBAction func onUpload(sender: AnyObject) {
-  
-                userData.postUserImage(pdfFile, withCaption: "pdf upload") { (success: Bool, error: NSError?) -> Void in
-                    if success {
-                        print("Upload succesfully")
-                        
-                        //erase imageview after succes upload
-                        //self.imagePhoto!.image = nil
-                        //self.captionField.text = ""
-                        
-                        NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
-                        
-                        
-                        //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
-                        //                self.navigationController!.pushViewController(VC1, animated: true)
-                        
-                    }
-                    else {
-                        print("Can't post to parse")
-                    }
-                }
-        
-            
-       
+//        userData.postUserImage(imageReadyUpload, withCaption: "captionField.text") { (success: Bool, error: NSError?) -> Void in
+//            if success {
+//                print("Upload succesfully")
+////                self.uplodaImage.image = nil
+////                self.captionField.text = ""
+//                
+//                NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+//                
+//                
+//                //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
+//                //                self.navigationController!.pushViewController(VC1, animated: true)
+//                
+//            }
+//            else {
+//                print("Can't post to parse")
+//            }
+//        }
         
     }
     
-
-
+    
+    
  
 
 }

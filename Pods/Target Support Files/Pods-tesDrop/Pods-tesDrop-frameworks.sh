@@ -88,9 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-tesDrop/BSGridCollectionViewLayout.framework"
   install_framework "Pods-tesDrop/BSImagePicker.framework"
   install_framework "Pods-tesDrop/Bolts.framework"
-  install_framework "Pods-tesDrop/M13PDFKit.framework"
   install_framework "Pods-tesDrop/Parse.framework"
-  install_framework "Pods-tesDrop/TTOpenInAppActivity.framework"
   install_framework "Pods-tesDrop/UIImageViewModeScaleAspect.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -98,8 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-tesDrop/BSGridCollectionViewLayout.framework"
   install_framework "Pods-tesDrop/BSImagePicker.framework"
   install_framework "Pods-tesDrop/Bolts.framework"
-  install_framework "Pods-tesDrop/M13PDFKit.framework"
   install_framework "Pods-tesDrop/Parse.framework"
-  install_framework "Pods-tesDrop/TTOpenInAppActivity.framework"
   install_framework "Pods-tesDrop/UIImageViewModeScaleAspect.framework"
 fi
