@@ -56,10 +56,11 @@ class SignUp: UIViewController {
         newUser.username = usernameField.text
         newUser.password = passwordField.text
         
+        //Password match check
         if(passwordField.text == rePasswordField.text){
-            
+            //username & password cannot match check
             if(usernameField.text != passwordField.text){
-                
+                //password's length > 8 char check
                 if(passwordField.text?.characters.count > 8){
                     // call sign up function on the object
                     newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in

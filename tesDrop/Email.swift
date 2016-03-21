@@ -68,11 +68,12 @@ class Email: UIViewController {
             self.performSegueWithIdentifier("emailToSignup", sender: nil)
         }
         else {
-            let alert = UIAlertView()
-            alert.title = "whooooo Slow Down"
-            alert.message = "Please Enter an Appropriate Email Address"
-            alert.addButtonWithTitle("Ok")
-            alert.show()
+            let alert = UIAlertController(title: "Email Error", message: "Please Enter an Appropriate Email Address", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(alertAction)in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+
         }
         
         

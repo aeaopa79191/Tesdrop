@@ -25,7 +25,7 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
     var photosAsset: PHFetchResult!
     var assetThumbnailSize:CGSize!
     
-    var imageReadyUpload: [UIImage] = []
+    var selectedImages: [UIImage] = []
     
     @IBOutlet var noPhotosLabel: UILabel!
     
@@ -52,16 +52,9 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
     @IBAction func btnPhotoAlbum(sender : AnyObject) {
         testingView()
     }
-    
-    
-    
 
     //Custom Phot Library
     func testingView(){
-        
-      
-        
-        
         
         let allAssets = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: nil)
         var evenAssetIds = [String]()
@@ -71,10 +64,8 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
                 evenAssetIds.append(asset.localIdentifier)
             }
         }
-        
-        
-        
-        let evenAssets = PHAsset.fetchAssetsWithLocalIdentifiers(evenAssetIds, options: nil)
+     
+//        let evenAssets = PHAsset.fetchAssetsWithLocalIdentifiers(evenAssetIds, options: nil)
         
         let vc = BSImagePickerViewController()
         vc.maxNumberOfSelections = 6
@@ -103,19 +94,22 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
             }
         }
         
-        
         bs_presentImagePickerController(vc, animated: true,
             select: { (asset: PHAsset) -> Void in
                 print("\nSelected: \n\(asset)")
-              
                 self.getAssetThumbnail(asset)
                 
             }, deselect: { (asset: PHAsset) -> Void in
                 print("\nDeselected: \n\(asset)")
+                
             }, cancel: { (assets: [PHAsset]) -> Void in
                 print("\nCancel: \n\(assets)")
+                self.selectedImages = []
+                
             }, finish: { (assets: [PHAsset]) -> Void in
                 print("\nFinish: \n\(assets)")
+                self.createCopy()
+                self.collectionView.reloadData()
             }, completion: nil)
     }
     
@@ -126,30 +120,44 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
         var thumbnail = UIImage()
         option.synchronous = true
 
-        //384, 256
-        manager.requestImageForAsset(asset, targetSize: CGSize(width: 384, height: 256), contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result!
-            
-            //Storing image into Images[] array
-            self.imageReadyUpload.append(thumbnail)
-            print(self.imageReadyUpload)
+        manager.requestImageForAsset(asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
 
-            
-            PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(result!)
-                let assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
-                if let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: self.assetCollection, assets: self.photosAsset) {
-                    albumChangeRequest.addAssets([assetPlaceholder!])
-                }
-                }, completionHandler: {(success, error)in
-                    dispatch_async(dispatch_get_main_queue(), {
-                        NSLog("Adding Image to Library -> %@", (success ? "Sucess":"Error!"))
-                    })
-            })
-            
+            thumbnail = result!
+            //Storing image into Images[] array
+            self.selectedImages.append(thumbnail)
         })
         return thumbnail
     }
+    
+    func createCopy() {
+        
+        let imgCount = (self.selectedImages.count) as Int
+        print("img Count is \(imgCount)")
+        
+        if (imgCount >= 0 ){
+            //create individual PFFiles for each image inside [image] array
+            for index in 0..<imgCount {
+                print(index)
+                let image = selectedImages[index]
+                
+                //create a copy of image then put that copy into thumbnail
+                PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+                    let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(image)
+                    let assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
+                    if let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: self.assetCollection, assets: self.photosAsset) {
+                        albumChangeRequest.addAssets([assetPlaceholder!])
+                    }
+                    }, completionHandler: {(success, error)in
+                        dispatch_async(dispatch_get_main_queue(), {
+                            NSLog("Adding Image to Library -> %@", (success ? "Sucess":"Error!"))
+                        })
+                })
+            }
+        }
+    }//end createCopy method
+    
+    
+    
     
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
@@ -161,8 +169,14 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
         PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: self.assetThumbnailSize, contentMode: .AspectFill, options: nil, resultHandler: {(result, info)in
             if let image = result {
                 cell.setThumbnailImage(image)
+                
+                //get a higher quality photo than thumbnail's size
+                if(image.size.width > 70){
+                    self.selectedImages.append(image)
+                }
             }
         })
+        
         return cell
     }
     
@@ -174,25 +188,7 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     @IBOutlet var collectionView : UICollectionView!
@@ -200,6 +196,7 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.selectedImages)
         
         //Check if the folder exists, if not, create it
         let fetchOptions = PHFetchOptions()
@@ -286,8 +283,6 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
         
     }
     
-
-    
     
     //UICollectionViewDataSource Methods (Remove the "!" on variables in the function prototype)
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -307,66 +302,35 @@ class selectPhoto: UIViewController, UICollectionViewDataSource, UICollectionVie
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 1
     }
-    
-//    //UIImagePickerControllerDelegate Methods
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
-//        if let image: UIImage = info["UIImagePickerControllerOriginalImage"] as? UIImage{
-//            
-//            //Implement if allowing user to edit the selected image
-//            //let editedImage = info.objectForKey("UIImagePickerControllerEditedImage") as UIImage
-//
-//            
-//            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-//            dispatch_async(dispatch_get_global_queue(priority, 0), {
-//                PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-//                    let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(image)
-//                    let assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
-//                    if let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: self.assetCollection, assets: self.photosAsset) {
-//                        albumChangeRequest.addAssets([assetPlaceholder!])
-//                    }
-//                    }, completionHandler: {(success, error)in
-//                        dispatch_async(dispatch_get_main_queue(), {
-//                            NSLog("Adding Image to Library -> %@", (success ? "Sucess":"Error!"))
-//                            picker.dismissViewControllerAnimated(true, completion: nil)
-//                        })
-//                })
-//                
-//            })
-//        }
-//    }
-//    func imagePickerControllerDidCancel(picker: UIImagePickerController){
-//        picker.dismissViewControllerAnimated(true, completion: nil)
-//    }
-    
-    
- 
-    
-    
+
+
+//upload images here
     @IBAction func btnDone(sender: UIBarButtonItem) {
-        print(imageReadyUpload.count)
-//        self.imageReadyUpload?.append(thumbnail)
-        print(self.imageReadyUpload)
-        
-        userData.postUserImage(imageReadyUpload, withCaption: "new") { (success: Bool, error: NSError?) -> Void in
-            if success {
-                print("Upload succesfully")
-                
-                //                self.uplodaImage.image = nil
-                //                self.captionField.text = ""
-                
-                //NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
-                
-                
-                //                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewID")
-                //                self.navigationController!.pushViewController(VC1, animated: true)
-                
-            }
-            else {
-                print("Can't post to parse")
-            }
+//        print(imageReadyUpload.count)
+//        print(self.imageReadyUpload)
+//        print(self.selectedImages)
+
+        if(self.selectedImages.count > 0){
+            userData.postUserImage(self.selectedImages, withCaption: "new") { (success: Bool, error: NSError?) -> Void in
+                if success {
+                    print("Upload succesfully\n")
+                    //set image array empty
+                    self.selectedImages.removeAll()
+                    //self.captionField.text = ""
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(goToHomeViewNotification, object: nil)
+                }
+                else {
+                    print("Can't post to parse")
+                }
+            }// end postUserImage
+        }else {
+            self.selectedImages.removeAll()
+            print("Nothing selected to upload")
         }
 
-    }
+
+    }//end btnDone
     
     
     

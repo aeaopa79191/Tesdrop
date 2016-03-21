@@ -22,10 +22,11 @@ class userData: NSObject {
         print("img Count is \(imgCount)")
         
         if (imgCount >= 0 ){
+            //create individual PFFiles for each image inside [image] array
             for index in 0..<imgCount {
                 print(index)
                 print("Current image on upload  is \(images)")
-                let image = images[index] as? UIImage
+                let image = images[index]
                 media["media\(index)"] = getPFFileFromImage(image) // PFFile column type
             }
         }
