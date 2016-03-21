@@ -29,10 +29,8 @@ The following **optional** features are implemented:
 
 Here we have our App's sketches with regards of each screen with key elements.
 
-![Mentor: Justin's layout](/Others Importants Files/justin's layout_1.pdf "Mentor: Justin's layout")
-![Meeting's Note](/Others Importants Files/tesDrop meeting Feb 20.pdf "Meeting's Note")
-
-
+[Mentor: Justin's layout](/Others Importants Files/justin's layout_1.pdf)
+[Wireframing](/Others Importants Files/tesDrop meeting Feb 20.pdf)
 
 ###Data Schema
 ![UML Diagram](/Others Importants Files/Document 1.png "UML Diagram")
