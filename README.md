@@ -47,6 +47,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+1. Unfamiliar with server side knowledge (unable how to build a bridge between server and in App implemented features).
 
 ## Considerations
 
