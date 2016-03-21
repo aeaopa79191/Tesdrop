@@ -57,38 +57,46 @@ class SignUp: UIViewController {
         newUser.password = passwordField.text
         
         if(passwordField.text == rePasswordField.text){
-            // call sign up function on the object
-            newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    print("User Registered successfully")
-                    // manually segue to logged in view
-                    self.performSegueWithIdentifier("signUpSegue", sender: nil)
-                    //self.tabBarController?.selectedIndex = 0
-                    
+            
+            if(usernameField.text != passwordField.text){
+                
+                if(passwordField.text?.characters.count > 8){
+                    // call sign up function on the object
+                    newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            print("User Registered successfully")
+                            // manually segue to logged in view
+                            self.performSegueWithIdentifier("signUpSegue", sender: nil)
+                            //self.tabBarController?.selectedIndex = 0
+                            
+                        }//end else
+                    }//end signUpInBackgroundWithBlock
+                }else{
+                    let alert = UIAlertController(title: "Warning", message: "Password needs to be at least 8 characters long for security reason.", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(alertAction)in
+                        alert.dismissViewControllerAnimated(true, completion: nil)
+                    }))
+                    self.presentViewController(alert, animated: true, completion: nil)
                 }
                 
+            } else {
+                let alert = UIAlertController(title: "Password Error", message: "Username cannot be the password", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(alertAction)in
+                    alert.dismissViewControllerAnimated(true, completion: nil)
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
-            
-            
-            
-            
         } //end if
         else {
-            let alert = UIAlertView()
-            alert.title = "Password Did Not Match"
-            alert.message = "Re-Enter your password"
-            alert.addButtonWithTitle("Ok")
-            alert.show()
-            
-            
+            let alert = UIAlertController(title: "Password Did Not Match", message: "Re-Enter your password", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(alertAction)in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-        
-        
-        
-        
-        
+  
     } //end signUp
 
 

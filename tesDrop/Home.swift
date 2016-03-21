@@ -64,16 +64,17 @@ class Home: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         let cell = tableView.dequeueReusableCellWithIdentifier("homeTableViewCell", forIndexPath: indexPath) as! homeTableViewCell
         let media = mediaArr![indexPath.row]
         cell.imageLabel.text = media["caption"] as? String
-        let userImageFile = media["media"] as! PFFile
-        userImageFile.getDataInBackgroundWithBlock {
-            (imageData: NSData?, error: NSError?) -> Void in
-            if error == nil {
-                if let imageData = imageData {
-                    let image = UIImage(data:imageData)
-                    cell.profileImageView.image = image
-                }
-            }
-        }
+//        let userImageFile = media["media"] as! PFFile
+//        
+//        userImageFile.getDataInBackgroundWithBlock {
+//            (imageData: NSData?, error: NSError?) -> Void in
+//            if error == nil {
+//                if let imageData = imageData {
+//                    let image = UIImage(data:imageData)
+//                    cell.profileImageView.image = image
+//                }
+//            }
+//        }
         return cell
     }
     

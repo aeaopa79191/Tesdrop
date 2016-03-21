@@ -21,13 +21,6 @@ class userData: NSObject {
         let imgCount = (images.count) as Int
         print("img Count is \(imgCount)")
         
-//        for index in 0...imgCount{
-//            print("Current image on upload  is \(images)")
-//            let image = images[index] as? UIImage
-//            media["media"] = getPFFileFromImage(image) // PFFile column type
-//
-//        }
-        
         if (imgCount >= 0 ){
             for index in 0..<imgCount {
                 print(index)
