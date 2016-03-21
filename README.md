@@ -9,15 +9,15 @@ Time spent: ***** hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] User login and sign up for account
-- [ ] Camera and Gallery to upload images 
+- [x] User login and sign up for account
+- [x] Camera and Gallery to upload images 
 - [ ] Search and filter features
 - [ ] Details for each cell in the table view
 - [ ] My contribution page fo each user
 
 The following **optional** features are implemented:
 
-1. [ ] Convert images to pdf files. 
+1. [x] Convert images to pdf files. 
 2. [ ] Feadbacks from users
 3. [ ] Able to rearrange files while in the uploading view
 4. [ ] Privates files upload
