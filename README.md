@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-1. [ ] Convert images to pdf files. 
+1. [x] Convert images to pdf files. 
 2. [ ] Feadbacks from users
 3. [ ] Able to rearrange files while in the uploading view
 4. [ ] Privates files upload
@@ -32,6 +32,10 @@ Here we have our App's sketches with regards of each screen with key elements.
 https://www.dropbox.com/s/rjrerfzg9e7ktgu/justin_s_layout_1.pdf?dl=0 
 https://www.dropbox.com/s/i4nwt30i5a2v1pk/tesdrop_meeting_feb_20.pdf?dl=0
 
+###Data Schema
+![UML Diagram](Document 1.png "UML Diagram")
+
+
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
@@ -43,6 +47,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+1. Unfamiliar with server side knowledge (unable how to build a bridge between server and in App implemented features).
 
 ## Considerations
 
@@ -90,7 +95,7 @@ VI.User can select the file, and can download/email.
 
 ## License
 
-    Copyright [2016] [Zhipeng (Adrian) Mei, Carlos Osco, Ka Kin Chiu (Ken)]
+    Copyright [2016] [Zhipeng (Adrian) Mei, Carlos Osco, Ka Kin Chiu (Ken), Jennifer Kwan]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -103,3 +108,5 @@ VI.User can select the file, and can download/email.
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+## Terms and Conditions
