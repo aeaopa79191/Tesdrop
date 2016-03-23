@@ -37,10 +37,6 @@ Here we have our App's sketches with regards of each screen with key elements.
 ![UML Diagram](/Others Importants Files/Document 1.png "UML Diagram")
 
 
-###Data Schema
-![UML Diagram](Document 1.png "UML Diagram")
-
-
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
