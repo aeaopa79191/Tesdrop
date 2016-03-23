@@ -34,20 +34,20 @@ https://www.dropbox.com/s/i4nwt30i5a2v1pk/tesdrop_meeting_feb_20.pdf?dl=0
 
 ###Data Schema
 
-User {
-Username: String
-Password: String
-Email: String
-School: String
-}
-
-File {
-id: Int
-title: String
-school: String
-subject: String
-term: String
-}
+    User {
+        Username: String
+        Password: String
+        Email: String
+        School: String
+    }
+    
+    File {
+        id: Int
+        title: String
+        school: String
+        subject: String
+        term: String
+    }
 
 
 ## Video Walkthrough 
