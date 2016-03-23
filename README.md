@@ -33,7 +33,21 @@ https://www.dropbox.com/s/rjrerfzg9e7ktgu/justin_s_layout_1.pdf?dl=0
 https://www.dropbox.com/s/i4nwt30i5a2v1pk/tesdrop_meeting_feb_20.pdf?dl=0
 
 ###Data Schema
-![UML Diagram](Document 1.png "UML Diagram")
+
+User {
+Username: String
+Password: String
+Email: String
+School: String
+}
+
+File {
+id: Int
+title: String
+school: String
+subject: String
+term: String
+}
 
 
 ## Video Walkthrough 
